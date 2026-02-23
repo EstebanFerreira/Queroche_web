@@ -54,17 +54,21 @@ body {
 }
 
 .logo {
-  font-family: var(--font-heading);
-  font-size: 1.6rem;
-  font-weight: 400;
-  letter-spacing: 0.08em;
-  color: var(--white);
   text-decoration: none;
-  transition: color 0.3s;
+  display: flex;
+  align-items: center;
 }
 
-#navbar.scrolled .logo {
-  color: var(--black);
+.logo-img {
+  height: 44px;
+  width: auto;
+  display: block;
+  filter: brightness(0) invert(1);  /* blanco sobre foto */
+  transition: filter 0.3s;
+}
+
+#navbar.scrolled .logo-img {
+  filter: none;  /* color real sobre fondo blanco */
 }
 
 .nav-right {
@@ -555,11 +559,11 @@ footer {
   justify-content: space-between;
 }
 
-.footer-logo {
-  font-family: var(--font-heading);
-  font-size: 1.3rem;
-  color: var(--white);
-  letter-spacing: 0.08em;
+.footer-logo-img {
+  height: 48px;
+  width: auto;
+  filter: brightness(0) invert(1);  /* logo blanco en footer negro */
+  opacity: 0.85;
 }
 
 .footer-copy {
