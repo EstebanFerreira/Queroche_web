@@ -6,10 +6,13 @@
   <title>Queroche — Arte en Movimiento</title>
   <meta name="description" content="Transporte especializado de obra de arte y fabricación y montaje de exposiciones. Zaragoza, Navarra y La Rioja.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
+
+  <!-- CURSOR -->
+  <div class="cursor" id="cursor"></div>
 
   <!-- NAV -->
   <nav id="navbar">
@@ -17,88 +20,104 @@
       <img src="img/logo.png" alt="Queroche" class="logo-img">
     </a>
     <div class="nav-right">
-      <a href="#servicios" data-es="Servicios" data-en="Services">Servicios</a>
-      <a href="#proyectos" data-es="Proyectos" data-en="Projects">Proyectos</a>
-      <a href="#nosotros" data-es="Nosotros" data-en="About">Nosotros</a>
-      <a href="#contacto" data-es="Contacto" data-en="Contact">Contacto</a>
       <button class="lang-toggle" id="langToggle">EN</button>
+      <button class="menu-btn" id="menuBtn">
+        <span></span><span></span>
+      </button>
     </div>
   </nav>
 
-  <!-- HERO SPLIT -->
+  <!-- MENÚ OVERLAY -->
+  <div class="menu-overlay" id="menuOverlay">
+    <nav class="menu-nav">
+      <a href="#servicios" class="menu-link" data-es="Servicios" data-en="Services">Servicios</a>
+      <a href="#proyectos" class="menu-link" data-es="Proyectos" data-en="Projects">Proyectos</a>
+      <a href="#nosotros" class="menu-link" data-es="Nosotros" data-en="About">Nosotros</a>
+      <a href="#contacto" class="menu-link" data-es="Contacto" data-en="Contact">Contacto</a>
+    </nav>
+    <div class="menu-footer">
+      <span>Zaragoza · Navarra · La Rioja</span>
+    </div>
+  </div>
+
+  <!-- HERO -->
   <section id="hero">
-    <div class="hero-photo">
+    <div class="hero-img-wrap">
       <img src="img/hero.jpg" alt="Instalación de arte" id="heroImg">
-      <div class="hero-photo-placeholder">
-        <span>Tu foto aquí</span>
-      </div>
     </div>
     <div class="hero-text">
-      <div class="hero-content">
-        <p class="hero-eyebrow" data-es="Zaragoza · Navarra · La Rioja" data-en="Zaragoza · Navarra · La Rioja">Zaragoza · Navarra · La Rioja</p>
-        <h1 data-es="El arte merece<br>el mejor trayecto." data-en="Art deserves<br>the finest journey.">El arte merece<br>el mejor trayecto.</h1>
-        <p class="hero-sub" data-es="Transporte especializado, fabricación y montaje de exposiciones para quienes entienden que los detalles importan." data-en="Specialized transport, fabrication and installation of exhibitions for those who understand that details matter.">Transporte especializado, fabricación y montaje de exposiciones para quienes entienden que los detalles importan.</p>
-        <a href="#contacto" class="btn" data-es="Hablemos" data-en="Let's talk">Hablemos</a>
-      </div>
+      <h1>
+        <em data-es="El arte merece" data-en="Art deserves">El arte merece</em>
+        <span data-es="el mejor trayecto." data-en="the finest journey.">el mejor trayecto.</span>
+      </h1>
+    </div>
+    <div class="hero-scroll">
+      <span data-es="scroll" data-en="scroll">scroll</span>
+      <div class="hero-scroll-line"></div>
     </div>
   </section>
 
   <!-- SERVICIOS -->
   <section id="servicios">
-    <div class="section-header">
-      <span class="section-label" data-es="Lo que hacemos" data-en="What we do">Lo que hacemos</span>
-      <h2 data-es="Servicios" data-en="Services">Servicios</h2>
+    <div class="services-intro">
+      <p class="label" data-es="— Lo que hacemos" data-en="— What we do">— Lo que hacemos</p>
     </div>
-    <div class="services-grid">
-      <div class="service-card">
-        <div class="service-icon">&#9651;</div>
-        <h3 data-es="Transporte de Arte" data-en="Art Transport">Transporte de Arte</h3>
-        <p data-es="Tratamos cada obra como si fuera única. Porque lo es. Vehículos acondicionados, embalaje especializado y seguimiento en todo momento." data-en="We treat every artwork as if it were unique. Because it is. Conditioned vehicles, specialized packaging and full tracking.">Tratamos cada obra como si fuera única. Porque lo es. Vehículos acondicionados, embalaje especializado y seguimiento en todo momento.</p>
+    <div class="services-list">
+      <div class="service-row">
+        <span class="service-num">01</span>
+        <div class="service-body">
+          <h2 data-es="Transporte de Arte" data-en="Art Transport">Transporte de Arte</h2>
+          <p data-es="Tratamos cada obra como si fuera única. Porque lo es. Vehículos acondicionados, embalaje especializado y seguimiento en todo momento." data-en="We treat every artwork as if it were unique. Because it is. Conditioned vehicles, specialized packaging and full tracking at all times.">Tratamos cada obra como si fuera única. Porque lo es. Vehículos acondicionados, embalaje especializado y seguimiento en todo momento.</p>
+        </div>
       </div>
-      <div class="service-card">
-        <div class="service-icon">&#9633;</div>
-        <h3 data-es="Fabricación de Exposiciones" data-en="Exhibition Fabrication">Fabricación de Exposiciones</h3>
-        <p data-es="Construimos los espacios donde el arte cobra vida. Desde el diseño hasta el último tornillo, con los materiales y el acabado que cada proyecto exige." data-en="We build the spaces where art comes to life. From design to the last screw, with the materials and finish each project demands.">Construimos los espacios donde el arte cobra vida. Desde el diseño hasta el último tornillo, con los materiales y el acabado que cada proyecto exige.</p>
+      <div class="service-row">
+        <span class="service-num">02</span>
+        <div class="service-body">
+          <h2 data-es="Fabricación de Exposiciones" data-en="Exhibition Fabrication">Fabricación de Exposiciones</h2>
+          <p data-es="Construimos los espacios donde el arte cobra vida. Desde el diseño hasta el último tornillo, con los materiales y el acabado que cada proyecto exige." data-en="We build the spaces where art comes to life. From design to the last detail, with the materials and finish each project demands.">Construimos los espacios donde el arte cobra vida. Desde el diseño hasta el último tornillo, con los materiales y el acabado que cada proyecto exige.</p>
+        </div>
       </div>
-      <div class="service-card">
-        <div class="service-icon">&#9675;</div>
-        <h3 data-es="Montaje y Desmontaje" data-en="Installation &amp; Dismantling">Montaje y Desmontaje</h3>
-        <p data-es="De la idea al espacio. Coordinamos cada fase del montaje para que la inauguración sea exactamente lo que imaginabas — sin improvisaciones." data-en="From concept to space. We coordinate every phase of the installation so the opening is exactly what you imagined — no improvisation.">De la idea al espacio. Coordinamos cada fase del montaje para que la inauguración sea exactamente lo que imaginabas — sin improvisaciones.</p>
+      <div class="service-row">
+        <span class="service-num">03</span>
+        <div class="service-body">
+          <h2 data-es="Montaje y Desmontaje" data-en="Installation &amp; Dismantling">Montaje y Desmontaje</h2>
+          <p data-es="De la idea al espacio. Coordinamos cada fase del montaje para que la inauguración sea exactamente lo que imaginabas — sin improvisaciones." data-en="From concept to space. We coordinate every phase so the opening is exactly what you imagined — no improvisation.">De la idea al espacio. Coordinamos cada fase del montaje para que la inauguración sea exactamente lo que imaginabas — sin improvisaciones.</p>
+        </div>
       </div>
     </div>
   </section>
 
   <!-- PROYECTOS -->
   <section id="proyectos">
-    <div class="section-header">
-      <span class="section-label" data-es="Nuestro trabajo" data-en="Our work">Nuestro trabajo</span>
-      <h2 data-es="Proyectos" data-en="Projects">Proyectos</h2>
+    <div class="projects-header">
+      <p class="label" data-es="— Nuestro trabajo" data-en="— Our work">— Nuestro trabajo</p>
     </div>
     <div class="projects-grid" id="projectsGrid">
-      <!-- Los proyectos se cargan dinámicamente desde data/projects.json -->
+      <!-- cargado dinámicamente -->
     </div>
   </section>
 
   <!-- NOSOTROS -->
   <section id="nosotros">
-    <div class="about-split">
+    <div class="about-statement">
+      <p data-es="Somos el equipo que mueve lo que otros no se atreven a tocar." data-en="We are the team that moves what others dare not touch.">Somos el equipo que mueve lo que otros no se atreven a tocar.</p>
+    </div>
+    <div class="about-body">
       <div class="about-text">
-        <span class="section-label" data-es="Quiénes somos" data-en="Who we are">Quiénes somos</span>
-        <h2 data-es="Somos Queroche." data-en="We are Queroche.">Somos Queroche.</h2>
-        <p data-es="Un equipo especializado en dar vida a exposiciones y en mover arte con el cuidado que merece. Operamos en Zaragoza, Navarra y La Rioja, trabajando con galerías, museos e instituciones culturales que confían en nosotros para que sus obras lleguen a buen puerto — y luzcan como merecen." data-en="A team specialized in bringing exhibitions to life and moving art with the care it deserves. We operate in Zaragoza, Navarra and La Rioja, working with galleries, museums and cultural institutions who trust us to ensure their works arrive safely — and look as they should.">Un equipo especializado en dar vida a exposiciones y en mover arte con el cuidado que merece. Operamos en Zaragoza, Navarra y La Rioja, trabajando con galerías, museos e instituciones culturales que confían en nosotros para que sus obras lleguen a buen puerto — y luzcan como merecen.</p>
+        <p data-es="Un equipo especializado en dar vida a exposiciones y en mover arte con el cuidado que merece. Operamos en Zaragoza, Navarra y La Rioja, trabajando con galerías, museos e instituciones culturales que confían en nosotros para que sus obras lleguen a buen puerto — y luzcan como merecen." data-en="A team specialized in bringing exhibitions to life and moving art with the care it deserves. Operating across Zaragoza, Navarra and La Rioja, working with galleries, museums and cultural institutions that trust us to ensure their works arrive safely — and look exactly as they should.">Un equipo especializado en dar vida a exposiciones y en mover arte con el cuidado que merece. Operamos en Zaragoza, Navarra y La Rioja, trabajando con galerías, museos e instituciones culturales que confían en nosotros para que sus obras lleguen a buen puerto — y luzcan como merecen.</p>
       </div>
       <div class="about-stats">
         <div class="stat">
-          <span class="stat-number">+10</span>
-          <span class="stat-label" data-es="años de experiencia" data-en="years of experience">años de experiencia</span>
+          <span class="stat-n">+10</span>
+          <span class="stat-l" data-es="años" data-en="years">años</span>
         </div>
         <div class="stat">
-          <span class="stat-number">+200</span>
-          <span class="stat-label" data-es="exposiciones montadas" data-en="exhibitions installed">exposiciones montadas</span>
+          <span class="stat-n">+200</span>
+          <span class="stat-l" data-es="exposiciones" data-en="exhibitions">exposiciones</span>
         </div>
         <div class="stat">
-          <span class="stat-number">3</span>
-          <span class="stat-label" data-es="comunidades autónomas" data-en="regions">comunidades autónomas</span>
+          <span class="stat-n">3</span>
+          <span class="stat-l" data-es="comunidades" data-en="regions">comunidades</span>
         </div>
       </div>
     </div>
@@ -106,22 +125,24 @@
 
   <!-- CONTACTO -->
   <section id="contacto">
-    <div class="contact-inner">
-      <div class="contact-text">
-        <span class="section-label" data-es="Hablemos" data-en="Get in touch">Hablemos</span>
-        <h2 data-es="¿Tienes un proyecto?" data-en="Got a project?">¿Tienes un proyecto?</h2>
-        <p data-es="Cuéntanos qué necesitas. Sin compromisos." data-en="Tell us what you need. No strings attached.">Cuéntanos qué necesitas. Sin compromisos.</p>
+    <div class="contact-headline">
+      <h2 data-es="¿Tienes un proyecto?" data-en="Got a project?">¿Tienes un proyecto?</h2>
+    </div>
+    <div class="contact-body">
+      <div class="contact-info">
+        <a href="mailto:info@queroche.com" class="contact-email">info@queroche.com</a>
         <div class="contact-details">
-          <a href="mailto:info@queroche.com">info@queroche.com</a>
-          <a href="tel:+34000000000">+34 000 000 000</a>
+          <span>+34 000 000 000</span>
           <span>Zaragoza, España</span>
         </div>
       </div>
       <form class="contact-form" onsubmit="return false;">
-        <input type="text" id="name" data-placeholder-es="Tu nombre" data-placeholder-en="Your name" placeholder="Tu nombre">
-        <input type="email" id="email" data-placeholder-es="Tu email" data-placeholder-en="Your email" placeholder="Tu email">
-        <textarea id="message" rows="4" data-placeholder-es="Cuéntanos tu proyecto..." data-placeholder-en="Tell us about your project..." placeholder="Cuéntanos tu proyecto..."></textarea>
-        <button type="submit" class="btn" data-es="Enviar mensaje" data-en="Send message">Enviar mensaje</button>
+        <div class="form-row">
+          <input type="text" data-placeholder-es="Nombre" data-placeholder-en="Name" placeholder="Nombre">
+          <input type="email" data-placeholder-es="Email" data-placeholder-en="Email" placeholder="Email">
+        </div>
+        <textarea rows="4" data-placeholder-es="Cuéntanos tu proyecto..." data-placeholder-en="Tell us about your project..." placeholder="Cuéntanos tu proyecto..."></textarea>
+        <button type="submit" class="btn-send" data-es="Enviar" data-en="Send">Enviar</button>
       </form>
     </div>
   </section>
@@ -129,7 +150,7 @@
   <!-- FOOTER -->
   <footer>
     <img src="img/logo.png" alt="Queroche" class="footer-logo-img">
-    <p class="footer-copy" data-es="© 2025 Queroche. Todos los derechos reservados." data-en="© 2025 Queroche. All rights reserved.">© 2025 Queroche. Todos los derechos reservados.</p>
+    <p class="footer-copy" data-es="© 2025 Queroche" data-en="© 2025 Queroche">© 2025 Queroche</p>
   </footer>
 
   <script src="js/main.js"></script>

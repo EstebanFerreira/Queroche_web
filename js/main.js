@@ -1,62 +1,73 @@
 // ============================================
-// QUEROCHE — JavaScript principal
+// QUEROCHE — JS
 // ============================================
 
 let currentLang = 'es';
 let projectsData = [];
 
-// --- Cargar proyectos desde JSON ---
-fetch('/data/projects.json')
+// --- Cursor personalizado ---
+const cursor = document.getElementById('cursor');
+document.addEventListener('mousemove', e => {
+  cursor.style.left = e.clientX + 'px';
+  cursor.style.top  = e.clientY + 'px';
+});
+
+// --- Menú overlay ---
+const menuBtn     = document.getElementById('menuBtn');
+const menuOverlay = document.getElementById('menuOverlay');
+
+menuBtn.addEventListener('click', () => {
+  menuBtn.classList.toggle('open');
+  menuOverlay.classList.toggle('open');
+});
+
+menuOverlay.querySelectorAll('.menu-link').forEach(link => {
+  link.addEventListener('click', () => {
+    menuBtn.classList.remove('open');
+    menuOverlay.classList.remove('open');
+  });
+});
+
+// --- Cargar proyectos ---
+fetch('data/projects.json')
   .then(r => r.json())
   .then(data => {
     projectsData = data.projects || [];
     renderProjects();
   })
-  .catch(() => {
-    // Si falla el fetch (ej. abrir index.html local), mostrar placeholder
-    renderProjects();
-  });
+  .catch(() => renderProjects());
 
 function renderProjects() {
   const grid = document.getElementById('projectsGrid');
   if (!grid) return;
 
   if (projectsData.length === 0) {
-    grid.innerHTML = '<p style="color:var(--gray); text-align:center; grid-column:1/-1;">Próximamente...</p>';
+    grid.innerHTML = '<p style="color:#888; grid-column:1/-1; padding: 4rem 0;">Próximamente...</p>';
     return;
   }
 
-  grid.innerHTML = projectsData.map((p, i) => {
-    const isLarge  = p.destacado === true;
-    const nombre   = currentLang === 'es' ? p.nombre    : (p.nombre_en    || p.nombre);
-    const foto     = p.foto || '';
+  grid.innerHTML = projectsData.map(p => {
+    const nombre = currentLang === 'es' ? p.nombre : (p.nombre_en || p.nombre);
+    const foto   = p.foto || '';
+    const large  = p.destacado ? ' large' : '';
 
     return `
-      <div class="project-item${isLarge ? ' large' : ''}">
-        ${foto
-          ? `<img src="${foto}" alt="${nombre}" class="project-img" loading="lazy">`
-          : `<div class="project-placeholder"><span>${nombre}</span></div>`
-        }
+      <div class="project-item${large} reveal">
+        <div class="project-img-wrap">
+          ${foto
+            ? `<img src="${foto}" alt="${nombre}" loading="lazy">`
+            : `<div class="project-placeholder"></div>`
+          }
+        </div>
         <div class="project-caption">
-          <p class="project-name">${nombre}</p>
-          <p class="project-location">${p.lugar}, ${p.fecha}</p>
+          <span class="project-name">${nombre}</span>
+          <span class="project-location">${p.lugar}, ${p.fecha}</span>
         </div>
       </div>`;
   }).join('');
 
-  // Reaplicar animaciones
-  applyScrollAnimation(grid.querySelectorAll('.project-item'));
+  observeReveal(grid.querySelectorAll('.reveal'));
 }
-
-// --- Navbar scroll ---
-window.addEventListener('scroll', () => {
-  const nav = document.getElementById('navbar');
-  if (window.scrollY > 60) {
-    nav.classList.add('scrolled');
-  } else {
-    nav.classList.remove('scrolled');
-  }
-});
 
 // --- Cambio de idioma ---
 document.getElementById('langToggle').addEventListener('click', () => {
@@ -69,45 +80,25 @@ document.getElementById('langToggle').addEventListener('click', () => {
 
 function translateAll() {
   document.querySelectorAll('[data-es]').forEach(el => {
-    const text = el.getAttribute('data-' + currentLang);
-    if (text) {
-      if (el.tagName === 'INPUT' || el.tagName === 'TEXTAREA') {
-        el.placeholder = text;
-      } else {
-        el.innerHTML = text;
-      }
-    }
+    const val = el.getAttribute('data-' + currentLang);
+    if (val) el.innerHTML = val;
   });
   document.querySelectorAll('[data-placeholder-es]').forEach(el => {
-    const text = el.getAttribute('data-placeholder-' + currentLang);
-    if (text) el.placeholder = text;
+    const val = el.getAttribute('data-placeholder-' + currentLang);
+    if (val) el.placeholder = val;
   });
 }
 
-// --- Imagen hero ---
-const heroImg = document.getElementById('heroImg');
-if (heroImg) {
-  heroImg.addEventListener('load',  () => heroImg.classList.add('loaded'));
-  heroImg.addEventListener('error', () => heroImg.style.display = 'none');
-}
-
-// --- Animación scroll ---
-function applyScrollAnimation(elements) {
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.style.opacity = '1';
-        entry.target.style.transform = 'translateY(0)';
+// --- Reveal on scroll ---
+function observeReveal(elements) {
+  const obs = new IntersectionObserver(entries => {
+    entries.forEach((e, i) => {
+      if (e.isIntersecting) {
+        setTimeout(() => e.target.classList.add('visible'), i * 80);
       }
     });
   }, { threshold: 0.1 });
-
-  elements.forEach(el => {
-    el.style.opacity = '0';
-    el.style.transform = 'translateY(20px)';
-    el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
-    observer.observe(el);
-  });
+  elements.forEach(el => obs.observe(el));
 }
 
-applyScrollAnimation(document.querySelectorAll('.service-card, .stat'));
+observeReveal(document.querySelectorAll('.service-row, .about-statement, .stat, .contact-headline'));
