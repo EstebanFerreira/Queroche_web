@@ -1,0 +1,629 @@
+/* ============================================
+   QUEROCHE — Estilos principales
+   ============================================ */
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  --black:   #111111;
+  --white:   #F8F7F5;
+  --gray:    #6b6b6b;
+  --accent:  #8B7355;
+  --border:  #e0ddd8;
+  --font-heading: 'Cormorant Garamond', serif;
+  --font-body:    'DM Sans', sans-serif;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--white);
+  color: var(--black);
+  font-family: var(--font-body);
+  font-size: 16px;
+  line-height: 1.6;
+  overflow-x: hidden;
+}
+
+/* ============================================
+   NAVBAR
+   ============================================ */
+#navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1.5rem 3rem;
+  transition: background 0.3s, backdrop-filter 0.3s;
+}
+
+#navbar.scrolled {
+  background: rgba(248, 247, 245, 0.92);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--border);
+}
+
+.logo {
+  font-family: var(--font-heading);
+  font-size: 1.6rem;
+  font-weight: 400;
+  letter-spacing: 0.08em;
+  color: var(--white);
+  text-decoration: none;
+  transition: color 0.3s;
+}
+
+#navbar.scrolled .logo {
+  color: var(--black);
+}
+
+.nav-right {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+}
+
+.nav-right a {
+  font-size: 0.8rem;
+  font-weight: 400;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: rgba(248, 247, 245, 0.85);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+.nav-right a:hover {
+  color: var(--white);
+}
+
+#navbar.scrolled .nav-right a {
+  color: var(--gray);
+}
+
+#navbar.scrolled .nav-right a:hover {
+  color: var(--black);
+}
+
+.lang-toggle {
+  background: none;
+  border: 1px solid rgba(248, 247, 245, 0.6);
+  color: rgba(248, 247, 245, 0.85);
+  font-family: var(--font-body);
+  font-size: 0.75rem;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  padding: 0.3rem 0.7rem;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.lang-toggle:hover {
+  background: rgba(255,255,255,0.15);
+}
+
+#navbar.scrolled .lang-toggle {
+  border-color: var(--border);
+  color: var(--gray);
+}
+
+#navbar.scrolled .lang-toggle:hover {
+  background: var(--black);
+  color: var(--white);
+  border-color: var(--black);
+}
+
+/* ============================================
+   HERO SPLIT
+   ============================================ */
+#hero {
+  display: grid;
+  grid-template-columns: 55% 45%;
+  height: 100vh;
+  min-height: 600px;
+}
+
+.hero-photo {
+  position: relative;
+  overflow: hidden;
+  background: #1a1a1a;
+}
+
+.hero-photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  opacity: 0.85;
+  transition: transform 8s ease;
+}
+
+.hero-photo img:hover {
+  transform: scale(1.03);
+}
+
+.hero-photo-placeholder {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: rgba(255,255,255,0.3);
+  font-size: 0.85rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+/* Ocultar placeholder cuando hay imagen real */
+.hero-photo img.loaded + .hero-photo-placeholder {
+  display: none;
+}
+
+.hero-text {
+  display: flex;
+  align-items: center;
+  padding: 6rem 4rem 4rem 5rem;
+  background: var(--white);
+}
+
+.hero-content {
+  max-width: 420px;
+}
+
+.hero-eyebrow {
+  font-size: 0.75rem;
+  font-weight: 400;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 1.5rem;
+}
+
+.hero-content h1 {
+  font-family: var(--font-heading);
+  font-size: clamp(2.8rem, 4vw, 4rem);
+  font-weight: 300;
+  line-height: 1.15;
+  letter-spacing: -0.01em;
+  margin-bottom: 1.5rem;
+  color: var(--black);
+}
+
+.hero-sub {
+  font-size: 0.95rem;
+  font-weight: 300;
+  line-height: 1.7;
+  color: var(--gray);
+  margin-bottom: 2.5rem;
+}
+
+/* ============================================
+   BOTÓN
+   ============================================ */
+.btn {
+  display: inline-block;
+  padding: 0.85rem 2.2rem;
+  background: var(--black);
+  color: var(--white);
+  text-decoration: none;
+  font-size: 0.8rem;
+  font-weight: 400;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  border: none;
+  cursor: pointer;
+  transition: background 0.2s, transform 0.2s;
+  font-family: var(--font-body);
+}
+
+.btn:hover {
+  background: var(--accent);
+  transform: translateY(-1px);
+}
+
+/* ============================================
+   SECCIONES — comunes
+   ============================================ */
+section {
+  padding: 6rem 3rem;
+}
+
+.section-header {
+  text-align: center;
+  margin-bottom: 4rem;
+}
+
+.section-label {
+  display: block;
+  font-size: 0.72rem;
+  font-weight: 400;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 0.75rem;
+}
+
+.section-header h2,
+h2 {
+  font-family: var(--font-heading);
+  font-size: clamp(2rem, 3.5vw, 3rem);
+  font-weight: 300;
+  letter-spacing: -0.01em;
+  color: var(--black);
+}
+
+/* ============================================
+   SERVICIOS
+   ============================================ */
+#servicios {
+  background: var(--black);
+  color: var(--white);
+}
+
+#servicios .section-header h2 {
+  color: var(--white);
+}
+
+.services-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.service-card {
+  padding: 3rem 2.5rem;
+  border-right: 1px solid rgba(255,255,255,0.1);
+  transition: background 0.3s;
+}
+
+.service-card:last-child {
+  border-right: none;
+}
+
+.service-card:hover {
+  background: rgba(255,255,255,0.04);
+}
+
+.service-icon {
+  font-size: 1.2rem;
+  color: var(--accent);
+  margin-bottom: 1.5rem;
+  opacity: 0.8;
+}
+
+.service-card h3 {
+  font-family: var(--font-heading);
+  font-size: 1.6rem;
+  font-weight: 400;
+  margin-bottom: 1rem;
+  color: var(--white);
+}
+
+.service-card p {
+  font-size: 0.88rem;
+  font-weight: 300;
+  line-height: 1.8;
+  color: rgba(248, 247, 245, 0.65);
+}
+
+/* ============================================
+   PROYECTOS
+   ============================================ */
+#proyectos {
+  background: var(--white);
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 6rem 3rem;
+}
+
+.projects-grid {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr;
+  grid-template-rows: auto auto;
+  gap: 1rem;
+}
+
+.project-item {
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
+}
+
+.project-item.large {
+  grid-row: span 2;
+}
+
+.project-placeholder {
+  width: 100%;
+  aspect-ratio: 4/3;
+  background: #e8e5e0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: rgba(0,0,0,0.25);
+  font-size: 0.8rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  transition: background 0.3s;
+}
+
+.project-item.large .project-placeholder {
+  aspect-ratio: 3/4;
+  height: 100%;
+  min-height: 500px;
+}
+
+.project-item:hover .project-placeholder {
+  background: #d8d3cc;
+}
+
+.project-caption {
+  padding: 0.8rem 0;
+}
+
+.project-name {
+  font-family: var(--font-heading);
+  font-size: 1.1rem;
+  font-weight: 400;
+}
+
+.project-location {
+  font-size: 0.78rem;
+  color: var(--gray);
+  letter-spacing: 0.05em;
+  margin-top: 0.2rem;
+}
+
+/* ============================================
+   NOSOTROS
+   ============================================ */
+#nosotros {
+  background: #F0EDE8;
+  padding: 6rem 3rem;
+}
+
+.about-split {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 6rem;
+  max-width: 1100px;
+  margin: 0 auto;
+  align-items: center;
+}
+
+.about-text h2 {
+  margin: 0.75rem 0 1.5rem;
+}
+
+.about-text p {
+  font-size: 0.95rem;
+  font-weight: 300;
+  line-height: 1.85;
+  color: #444;
+}
+
+.about-stats {
+  display: flex;
+  flex-direction: column;
+  gap: 2.5rem;
+}
+
+.stat {
+  display: flex;
+  flex-direction: column;
+  border-left: 2px solid var(--accent);
+  padding-left: 1.5rem;
+}
+
+.stat-number {
+  font-family: var(--font-heading);
+  font-size: 3rem;
+  font-weight: 300;
+  line-height: 1;
+  color: var(--black);
+}
+
+.stat-label {
+  font-size: 0.82rem;
+  font-weight: 300;
+  color: var(--gray);
+  margin-top: 0.3rem;
+  letter-spacing: 0.05em;
+}
+
+/* ============================================
+   CONTACTO
+   ============================================ */
+#contacto {
+  background: var(--white);
+  padding: 6rem 3rem;
+}
+
+.contact-inner {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 6rem;
+  max-width: 1100px;
+  margin: 0 auto;
+  align-items: start;
+}
+
+.contact-text h2 {
+  margin: 0.75rem 0 1rem;
+}
+
+.contact-text > p {
+  font-size: 0.95rem;
+  font-weight: 300;
+  color: var(--gray);
+  margin-bottom: 2rem;
+}
+
+.contact-details {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+.contact-details a,
+.contact-details span {
+  font-size: 0.9rem;
+  color: var(--black);
+  text-decoration: none;
+  font-weight: 300;
+  letter-spacing: 0.02em;
+  transition: color 0.2s;
+}
+
+.contact-details a:hover {
+  color: var(--accent);
+}
+
+.contact-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.contact-form input,
+.contact-form textarea {
+  width: 100%;
+  padding: 0.9rem 1rem;
+  background: none;
+  border: none;
+  border-bottom: 1px solid var(--border);
+  font-family: var(--font-body);
+  font-size: 0.9rem;
+  font-weight: 300;
+  color: var(--black);
+  outline: none;
+  transition: border-color 0.2s;
+  resize: none;
+}
+
+.contact-form input:focus,
+.contact-form textarea:focus {
+  border-bottom-color: var(--black);
+}
+
+.contact-form input::placeholder,
+.contact-form textarea::placeholder {
+  color: #b0aca6;
+}
+
+.contact-form .btn {
+  align-self: flex-start;
+  margin-top: 0.5rem;
+}
+
+/* ============================================
+   FOOTER
+   ============================================ */
+footer {
+  background: var(--black);
+  padding: 3rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.footer-logo {
+  font-family: var(--font-heading);
+  font-size: 1.3rem;
+  color: var(--white);
+  letter-spacing: 0.08em;
+}
+
+.footer-copy {
+  font-size: 0.78rem;
+  color: rgba(255,255,255,0.35);
+  letter-spacing: 0.05em;
+}
+
+/* ============================================
+   RESPONSIVE
+   ============================================ */
+@media (max-width: 900px) {
+  #navbar {
+    padding: 1.2rem 1.5rem;
+  }
+
+  .nav-right a {
+    display: none;
+  }
+
+  #hero {
+    grid-template-columns: 1fr;
+    grid-template-rows: 50vh 1fr;
+    height: auto;
+  }
+
+  .hero-text {
+    padding: 3rem 2rem;
+  }
+
+  .hero-content {
+    max-width: 100%;
+  }
+
+  .services-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .service-card {
+    border-right: none;
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+  }
+
+  .projects-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .project-item.large {
+    grid-column: span 2;
+    grid-row: span 1;
+  }
+
+  .project-item.large .project-placeholder {
+    aspect-ratio: 16/9;
+    min-height: unset;
+  }
+
+  .about-split,
+  .contact-inner {
+    grid-template-columns: 1fr;
+    gap: 3rem;
+  }
+
+  footer {
+    flex-direction: column;
+    gap: 1rem;
+    text-align: center;
+  }
+}
+
+@media (max-width: 600px) {
+  section {
+    padding: 4rem 1.5rem;
+  }
+
+  .projects-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .project-item.large {
+    grid-column: span 1;
+  }
+}
