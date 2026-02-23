@@ -1,0 +1,31 @@
+backend:
+  name: git-gateway
+  branch: main
+
+locale: es
+media_folder: img/projects
+public_folder: /img/projects
+
+collections:
+  - name: projects
+    label: Exposiciones
+    label_singular: Exposición
+    description: "Añade y gestiona las exposiciones del portfolio"
+    files:
+      - file: data/projects.json
+        label: Lista de Exposiciones
+        name: projects_list
+        fields:
+          - label: Exposiciones
+            name: projects
+            widget: list
+            summary: "{{fields.nombre}} — {{fields.lugar}}, {{fields.fecha}}"
+            fields:
+              - { label: "Nombre (ES)",        name: nombre,        widget: string }
+              - { label: "Nombre (EN)",        name: nombre_en,     widget: string }
+              - { label: "Año",                name: fecha,         widget: string, hint: "Ej: 2024" }
+              - { label: "Lugar",              name: lugar,         widget: string, hint: "Ej: Zaragoza" }
+              - { label: "Descripción (ES)",   name: descripcion,   widget: text,   required: false }
+              - { label: "Descripción (EN)",   name: descripcion_en,widget: text,   required: false }
+              - { label: "Foto",               name: foto,          widget: image,  required: false }
+              - { label: "Destacado (sale grande)", name: destacado, widget: boolean, default: false }

@@ -1,0 +1,34 @@
+{
+  "projects": [
+    {
+      "nombre": "Nombre del proyecto",
+      "nombre_en": "Project name",
+      "fecha": "2024",
+      "lugar": "Zaragoza",
+      "descripcion": "Descripción del proyecto en español.",
+      "descripcion_en": "Project description in English.",
+      "foto": "",
+      "destacado": true
+    },
+    {
+      "nombre": "Nombre del proyecto",
+      "nombre_en": "Project name",
+      "fecha": "2024",
+      "lugar": "Pamplona",
+      "descripcion": "Descripción del proyecto en español.",
+      "descripcion_en": "Project description in English.",
+      "foto": "",
+      "destacado": false
+    },
+    {
+      "nombre": "Nombre del proyecto",
+      "nombre_en": "Project name",
+      "fecha": "2024",
+      "lugar": "Logroño",
+      "descripcion": "Descripción del proyecto en español.",
+      "descripcion_en": "Project description in English.",
+      "foto": "",
+      "destacado": false
+    }
+  ]
+}
